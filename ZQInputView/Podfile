@@ -1,0 +1,17 @@
+platform :ios, '8.0'
+
+target 'ZQInputView' do
+
+pod 'Masonry'
+
+  target 'ZQInputViewTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'ZQInputViewUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
