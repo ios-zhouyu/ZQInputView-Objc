@@ -10,7 +10,7 @@
 #import "ZQEmoticonsManager.h"
 #import "ZQEmoticonsModel.h"
 
-#define pageButtonCount 20
+#define pageButtonCount 44
 
 @interface ZQEmoticonsManager ()
 

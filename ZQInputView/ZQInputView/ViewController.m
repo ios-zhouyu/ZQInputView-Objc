@@ -23,7 +23,7 @@
     [self.view addSubview:self.emoticonsView];
     [self.emoticonsView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(200);
+        make.height.mas_equalTo(250);
     }];
     
 }

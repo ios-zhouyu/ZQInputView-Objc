@@ -11,9 +11,9 @@
 #import "Masonry.h"
 #import "ZQEmoticonsButton.h"
 
-#define pageButtonCount 20
-#define colCount 7
-#define rowCount 3
+#define pageButtonCount 44
+#define colCount 9
+#define rowCount 5
 
 @interface ZQEmoticonsCell ()
 @property (nonatomic, strong) NSMutableArray *emoticonsButtonArrM;//表情按钮
@@ -63,7 +63,7 @@
 - (void)setEmoticonsArr:(NSArray *)emoticonsArr {
     _emoticonsArr = emoticonsArr;
     for (ZQEmoticonsButton *button in self.emoticonsButtonArrM) {
-        button.hidden = YES;
+        button.hidden = NO;
     }
     [emoticonsArr enumerateObjectsUsingBlock:^(ZQEmoticonsModel * _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
         ZQEmoticonsButton *button = self.emoticonsButtonArrM[idx];
