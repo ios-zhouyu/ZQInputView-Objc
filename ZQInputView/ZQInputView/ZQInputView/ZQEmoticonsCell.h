@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZQEmoticonsModel.h"
+
+@protocol ZQEmoticonsCellDelegate <NSObject>
+@optional
+- (void)emoticonsCellSelectedEmoticonsWithEmoticonsModel:(ZQEmoticonsModel *)model;
+@end
 
 @interface ZQEmoticonsCell : UICollectionViewCell
 @property (nonatomic, copy) NSArray *emoticonsArr;//每页的表情
+
+@property (nonatomic, weak) id<ZQEmoticonsCellDelegate> delegate;
+
 @end

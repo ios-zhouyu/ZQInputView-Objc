@@ -21,6 +21,7 @@
 		6230DD7C208F21CE00D4E8E6 /* ZQEmoticonsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6230DD7B208F21CE00D4E8E6 /* ZQEmoticonsCell.m */; };
 		6230DD7F208F29F500D4E8E6 /* ZQEmoticonsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6230DD7E208F29F500D4E8E6 /* ZQEmoticonsButton.m */; };
 		6230DD82208F559F00D4E8E6 /* ZQEmoticonsBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6230DD81208F559F00D4E8E6 /* ZQEmoticonsBottomView.m */; };
+		625F16FD209020A80023FF05 /* ZQInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 625F16FC209020A80023FF05 /* ZQInputAccessoryView.m */; };
 		DFC5C682D3BCA20AA4DA83F6 /* libPods-ZQInputViewTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 309FE3CEF1085E33C088D314 /* libPods-ZQInputViewTests.a */; };
 		E24A6CF0D531FFF4A6FB9728 /* libPods-ZQInputViewUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73571E5311667CD6067F0189 /* libPods-ZQInputViewUITests.a */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,8 @@
 		6230DD7E208F29F500D4E8E6 /* ZQEmoticonsButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQEmoticonsButton.m; sourceTree = "<group>"; };
 		6230DD80208F559F00D4E8E6 /* ZQEmoticonsBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQEmoticonsBottomView.h; sourceTree = "<group>"; };
 		6230DD81208F559F00D4E8E6 /* ZQEmoticonsBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQEmoticonsBottomView.m; sourceTree = "<group>"; };
+		625F16FB209020A80023FF05 /* ZQInputAccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQInputAccessoryView.h; sourceTree = "<group>"; };
+		625F16FC209020A80023FF05 /* ZQInputAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQInputAccessoryView.m; sourceTree = "<group>"; };
 		73571E5311667CD6067F0189 /* libPods-ZQInputViewUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZQInputViewUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB7587533E541D6427AACF6 /* Pods-ZQInputViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZQInputViewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZQInputViewTests/Pods-ZQInputViewTests.release.xcconfig"; sourceTree = "<group>"; };
 		98C0E38D02CB6020F54AC227 /* Pods-ZQInputViewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZQInputViewUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZQInputViewUITests/Pods-ZQInputViewUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,18 +155,9 @@
 				6230DD3E208F086600D4E8E6 /* AppDelegate.m */,
 				6230DD40208F086600D4E8E6 /* ViewController.h */,
 				6230DD41208F086600D4E8E6 /* ViewController.m */,
-				6230DD77208F210500D4E8E6 /* ZQEmoticonsView.h */,
-				6230DD78208F210500D4E8E6 /* ZQEmoticonsView.m */,
-				6230DD7A208F21CE00D4E8E6 /* ZQEmoticonsCell.h */,
-				6230DD7B208F21CE00D4E8E6 /* ZQEmoticonsCell.m */,
-				6230DD80208F559F00D4E8E6 /* ZQEmoticonsBottomView.h */,
-				6230DD81208F559F00D4E8E6 /* ZQEmoticonsBottomView.m */,
-				6230DD7D208F29F500D4E8E6 /* ZQEmoticonsButton.h */,
-				6230DD7E208F29F500D4E8E6 /* ZQEmoticonsButton.m */,
-				6230DD71208F0A5300D4E8E6 /* ZQEmoticonsManager.h */,
-				6230DD72208F0A5300D4E8E6 /* ZQEmoticonsManager.m */,
-				6230DD74208F0B9900D4E8E6 /* ZQEmoticonsModel.h */,
-				6230DD75208F0B9900D4E8E6 /* ZQEmoticonsModel.m */,
+				625F170020903DE40023FF05 /* ZQInputAccessoryView */,
+				625F16FF20903DC30023FF05 /* ZQInputView */,
+				625F16FE20903DA20023FF05 /* ZQEmoticonsManager */,
 				6230DD46208F086700D4E8E6 /* Assets.xcassets */,
 				6230DD4B208F086700D4E8E6 /* Info.plist */,
 				6230DD4C208F086700D4E8E6 /* main.m */,
@@ -187,6 +181,41 @@
 				6230DD63208F086700D4E8E6 /* Info.plist */,
 			);
 			path = ZQInputViewUITests;
+			sourceTree = "<group>";
+		};
+		625F16FE20903DA20023FF05 /* ZQEmoticonsManager */ = {
+			isa = PBXGroup;
+			children = (
+				6230DD71208F0A5300D4E8E6 /* ZQEmoticonsManager.h */,
+				6230DD72208F0A5300D4E8E6 /* ZQEmoticonsManager.m */,
+				6230DD74208F0B9900D4E8E6 /* ZQEmoticonsModel.h */,
+				6230DD75208F0B9900D4E8E6 /* ZQEmoticonsModel.m */,
+			);
+			path = ZQEmoticonsManager;
+			sourceTree = "<group>";
+		};
+		625F16FF20903DC30023FF05 /* ZQInputView */ = {
+			isa = PBXGroup;
+			children = (
+				6230DD77208F210500D4E8E6 /* ZQEmoticonsView.h */,
+				6230DD78208F210500D4E8E6 /* ZQEmoticonsView.m */,
+				6230DD7A208F21CE00D4E8E6 /* ZQEmoticonsCell.h */,
+				6230DD7B208F21CE00D4E8E6 /* ZQEmoticonsCell.m */,
+				6230DD7D208F29F500D4E8E6 /* ZQEmoticonsButton.h */,
+				6230DD7E208F29F500D4E8E6 /* ZQEmoticonsButton.m */,
+				6230DD80208F559F00D4E8E6 /* ZQEmoticonsBottomView.h */,
+				6230DD81208F559F00D4E8E6 /* ZQEmoticonsBottomView.m */,
+			);
+			path = ZQInputView;
+			sourceTree = "<group>";
+		};
+		625F170020903DE40023FF05 /* ZQInputAccessoryView */ = {
+			isa = PBXGroup;
+			children = (
+				625F16FB209020A80023FF05 /* ZQInputAccessoryView.h */,
+				625F16FC209020A80023FF05 /* ZQInputAccessoryView.m */,
+			);
+			path = ZQInputAccessoryView;
 			sourceTree = "<group>";
 		};
 		C15117C845B8888799A24164 /* Frameworks */ = {
@@ -491,6 +520,7 @@
 				6230DD4D208F086700D4E8E6 /* main.m in Sources */,
 				6230DD79208F210500D4E8E6 /* ZQEmoticonsView.m in Sources */,
 				6230DD73208F0A5300D4E8E6 /* ZQEmoticonsManager.m in Sources */,
+				625F16FD209020A80023FF05 /* ZQInputAccessoryView.m in Sources */,
 				6230DD7F208F29F500D4E8E6 /* ZQEmoticonsButton.m in Sources */,
 				6230DD3F208F086600D4E8E6 /* AppDelegate.m in Sources */,
 			);

@@ -14,7 +14,7 @@
 
 static NSString *emoticonCellID = @"emoticonCell";
 
-@interface ZQEmoticonsView ()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate,ZQEmoticonsBottomViewDelegate>
+@interface ZQEmoticonsView ()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate,ZQEmoticonsBottomViewDelegate,ZQEmoticonsCellDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) ZQEmoticonsBottomView *bottomView;
@@ -39,6 +39,13 @@ static NSString *emoticonCellID = @"emoticonCell";
         }];
     }
     return self;
+}
+
+#pragma mark - ZQEmoticonsCellDelegate
+- (void)emoticonsCellSelectedEmoticonsWithEmoticonsModel:(ZQEmoticonsModel *)model {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(emoticonsViewSelectedEmoticonsWithEmoticonsModel:)]) {
+        [self.delegate emoticonsViewSelectedEmoticonsWithEmoticonsModel:model];
+    }
 }
 
 #pragma mark - ZQEmoticonsBottomViewDelegate
@@ -70,6 +77,7 @@ static NSString *emoticonCellID = @"emoticonCell";
     // [[[[ZQEmoticonsManager alloc] init] getAllEmoticons] objectAtIndex:indexPath.section] -- 一个表情包
     // [[[[[ZQEmoticonsManager alloc] init] getAllEmoticons] objectAtIndex:indexPath.section] objectAtIndex:indexPath.item] -- 对应着20个表情,所切割的一页
     cell.emoticonsArr = [[[[[ZQEmoticonsManager alloc] init] getAllEmoticons] objectAtIndex:indexPath.section] objectAtIndex:indexPath.item];
+    cell.delegate = self;
     return cell;
 }
 

@@ -30,18 +30,16 @@
         
         //pageButtonCount个表情按钮
         for (int i = 0; i < pageButtonCount; i++) {
-            @autoreleasepool {
-                ZQEmoticonsButton *emoticonsButton = [ZQEmoticonsButton buttonWithType:UIButtonTypeCustom];
-                [emoticonsButton addTarget:self action:@selector(emoticonButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-                emoticonsButton.titleLabel.font = [UIFont systemFontOfSize:32];
-                NSInteger col = i % colCount;
-                NSInteger row = i / colCount;
-                CGFloat buttonX = buttonWidth * col;
-                CGFloat buttonY = buttonHeight * row;
-                emoticonsButton.frame = CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight);
-                [self addSubview:emoticonsButton];
-                [self.emoticonsButtonArrM addObject:emoticonsButton];
-            }
+            ZQEmoticonsButton *emoticonsButton = [ZQEmoticonsButton buttonWithType:UIButtonTypeCustom];
+            [emoticonsButton addTarget:self action:@selector(emoticonButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            emoticonsButton.titleLabel.font = [UIFont systemFontOfSize:32];
+            NSInteger col = i % colCount;
+            NSInteger row = i / colCount;
+            CGFloat buttonX = buttonWidth * col;
+            CGFloat buttonY = buttonHeight * row;
+            emoticonsButton.frame = CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight);
+            [self addSubview:emoticonsButton];
+            [self.emoticonsButtonArrM addObject:emoticonsButton];
             
             //1个删除按钮
             self.deleteButton.frame = CGRectMake(buttonWidth * (colCount - 1), buttonHeight * (rowCount - 1), buttonWidth, buttonHeight);
@@ -53,7 +51,9 @@
 
 #pragma mark - button click
 - (void)emoticonButtonClick:(ZQEmoticonsButton *)button {
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(emoticonsCellSelectedEmoticonsWithEmoticonsModel:)]) {
+        [self.delegate emoticonsCellSelectedEmoticonsWithEmoticonsModel:button.model];
+    }
 }
 - (void)deleteButtonClick:(UIButton *)button {
     
@@ -63,7 +63,7 @@
 - (void)setEmoticonsArr:(NSArray *)emoticonsArr {
     _emoticonsArr = emoticonsArr;
     for (ZQEmoticonsButton *button in self.emoticonsButtonArrM) {
-        button.hidden = NO;
+        button.hidden = YES;
     }
     [emoticonsArr enumerateObjectsUsingBlock:^(ZQEmoticonsModel * _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
         ZQEmoticonsButton *button = self.emoticonsButtonArrM[idx];
