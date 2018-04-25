@@ -63,7 +63,7 @@
 #pragma mark - getter
 - (NSArray *)titleArr {
     if (!_titleArr) {
-        _titleArr = @[@"默认",@"emoji",@"浪小花"];
+        _titleArr = @[@"默认",@"emoji",@"小新"];
     }
     return _titleArr;
 }

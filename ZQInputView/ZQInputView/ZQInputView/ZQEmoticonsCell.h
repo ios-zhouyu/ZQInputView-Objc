@@ -12,6 +12,7 @@
 @protocol ZQEmoticonsCellDelegate <NSObject>
 @optional
 - (void)emoticonsCellSelectedEmoticonsWithEmoticonsModel:(ZQEmoticonsModel *)model;
+- (void)emoticonsCellDeletedEmoticons;
 @end
 
 @interface ZQEmoticonsCell : UICollectionViewCell

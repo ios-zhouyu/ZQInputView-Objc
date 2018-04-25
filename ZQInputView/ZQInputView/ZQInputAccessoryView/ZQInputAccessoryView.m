@@ -39,7 +39,7 @@
         [self.cameraButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self);
             make.left.mas_equalTo(self.photoButton.mas_right).offset(10);
-            make.width.height.mas_equalTo(40);
+            make.width.height.mas_equalTo(30);
         }];
         
         [self.friendButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -57,7 +57,7 @@
         [self.doneButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self);
             make.right.mas_equalTo(self).offset(-10);
-            make.width.height.mas_equalTo(30);
+            make.width.height.mas_equalTo(35);
         }];
         
     }

@@ -56,7 +56,9 @@
     }
 }
 - (void)deleteButtonClick:(UIButton *)button {
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(emoticonsCellDeletedEmoticons)]) {
+        [self.delegate emoticonsCellDeletedEmoticons];
+    }
 }
 
 #pragma mark - setter

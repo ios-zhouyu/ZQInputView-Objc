@@ -42,6 +42,11 @@ static NSString *emoticonCellID = @"emoticonCell";
 }
 
 #pragma mark - ZQEmoticonsCellDelegate
+- (void)emoticonsCellDeletedEmoticons {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(emoticonsViewDeletedEmoticons)]) {
+        [self.delegate emoticonsViewDeletedEmoticons];
+    }
+}
 - (void)emoticonsCellSelectedEmoticonsWithEmoticonsModel:(ZQEmoticonsModel *)model {
     if (self.delegate && [self.delegate respondsToSelector:@selector(emoticonsViewSelectedEmoticonsWithEmoticonsModel:)]) {
         [self.delegate emoticonsViewSelectedEmoticonsWithEmoticonsModel:model];

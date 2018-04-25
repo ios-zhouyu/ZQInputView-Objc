@@ -10,12 +10,12 @@
 #import "ZQEmoticonsView.h"
 #import "Masonry.h"
 #import "ZQInputAccessoryView.h"
+#import "ZQTextAttachment.h"
 
 @interface ViewController ()<UITextViewDelegate,ZQInputAccessoryViewDelegagte,ZQEmoticonsViewDelegate>
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) ZQEmoticonsView *emoticonsView;
 @property (nonatomic, strong) ZQInputAccessoryView *accessoryView;
-
 @end
 
 @implementation ViewController
@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"表情键盘";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(publishState)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -40,9 +41,76 @@
     }];
 }
 
+#pragma mark - publish state
+- (void)publishState {
+    __block NSString *publishString = @"";
+    [self.textView.attributedText enumerateAttributesInRange:NSMakeRange(0, self.textView.attributedText.length) options:0 usingBlock:^(NSDictionary<NSAttributedStringKey,id> * _Nonnull attrs, NSRange range, BOOL * _Nonnull stop) {
+        if (attrs[@"NSAttachment"]) {//图片替换成对应的文字
+            ZQTextAttachment *textAttachment = attrs[@"NSAttachment"];
+            if (textAttachment.model.chs) {
+                publishString = [publishString stringByAppendingString:textAttachment.model.chs];
+            }
+        } else {//文字或者表情
+            NSString *subString = [self.textView.text substringWithRange:range];
+            publishString = [publishString stringByAppendingString:subString];
+        }
+    }];
+    NSLog(@"%@",publishString);
+}
+
 #pragma mark - ZQEmoticonsViewDelegate
+- (void)emoticonsViewDeletedEmoticons {
+    if (self.textView.attributedText) {
+        //当前光标的位置
+        NSRange currentRange = self.textView.selectedRange;
+        NSAttributedString *beforeAttributedString = [self.textView.attributedText attributedSubstringFromRange:NSMakeRange(0, currentRange.location)];
+        NSAttributedString *afterAttributedString = [self.textView.attributedText attributedSubstringFromRange:NSMakeRange(currentRange.location , self.textView.attributedText.length - beforeAttributedString.length)];
+        
+        //如果前半部分没有内容,就不处理了
+        if (beforeAttributedString.length <= 0) {
+            return;
+        }
+        //光标前部分的beforeAttributedString减少一个(emoji字符占两个字节)//判断即将被删除的是一个字和图片,还是emoji
+        NSRange lastRange = [beforeAttributedString.string rangeOfComposedCharacterSequenceAtIndex:beforeAttributedString.string.length -1];
+        beforeAttributedString = [beforeAttributedString attributedSubstringFromRange:NSMakeRange(0, beforeAttributedString.length - lastRange.length)];
+        
+        //前后两部分合并赋值给textView
+        NSMutableAttributedString *resultAttributedString = [[NSMutableAttributedString alloc] initWithAttributedString:beforeAttributedString];
+        [resultAttributedString appendAttributedString:afterAttributedString];
+        self.textView.attributedText = resultAttributedString;
+        
+        //光标前移
+        self.textView.selectedRange = NSMakeRange(currentRange.location - lastRange.length,0);
+    }
+    
+}
 - (void)emoticonsViewSelectedEmoticonsWithEmoticonsModel:(ZQEmoticonsModel *)model {
-    NSLog(@"%@----%@---%@",model.emoji,model.chs,model.png);
+    if (model.emoji) {//表情
+        [self.textView replaceRange:self.textView.selectedTextRange withText:model.emoji];
+    } else if (model.png && model.path) {//图片
+        //保存先前的attributedText内容
+       NSMutableAttributedString *oldAttributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.textView.attributedText];
+        
+        //创建包含TextAttachment附件的attributedString
+        ZQTextAttachment *textAttachment = [[ZQTextAttachment alloc] init];
+        textAttachment.model = model;
+        NSString *imagePath = [NSString stringWithFormat:@"%@/%@",model.path,model.png];
+        textAttachment.image = [UIImage imageWithContentsOfFile:imagePath];
+        CGFloat fontHeight = self.textView.font.lineHeight;
+        textAttachment.bounds = CGRectMake(0, -4, fontHeight, fontHeight);
+        NSAttributedString *attachmentAttributedString = [NSAttributedString attributedStringWithAttachment:textAttachment];
+        
+        //获取光标的位置,在当前光标出插入图片
+        NSRange currentRange = self.textView.selectedRange;
+        
+        //合并包含TextAttachment附件的attributedString,赋值给textView
+        [oldAttributedString replaceCharactersInRange:NSMakeRange(currentRange.location, 0) withAttributedString:attachmentAttributedString];
+        [oldAttributedString addAttribute:NSFontAttributeName value:self.textView.font range:NSMakeRange(0, oldAttributedString.length)];
+        self.textView.attributedText = oldAttributedString;
+        
+        //光标下移
+        self.textView.selectedRange = NSMakeRange(currentRange.location + 1,0);
+    }
 }
 
 #pragma mark - ZQInputAccessoryViewDelegagte
@@ -107,6 +175,7 @@
     if (!_textView) {
         _textView = [[UITextView alloc] init];
         _textView.delegate = self;
+        _textView.font = [UIFont systemFontOfSize:16.0];
     }
     return _textView;
 }

@@ -12,6 +12,7 @@
 @protocol ZQEmoticonsViewDelegate <NSObject>
 @optional
 - (void)emoticonsViewSelectedEmoticonsWithEmoticonsModel:(ZQEmoticonsModel *)model;
+- (void)emoticonsViewDeletedEmoticons;
 @end
 
 @interface ZQEmoticonsView : UIView
