@@ -12,11 +12,15 @@
 #import "ZQInputAccessoryView.h"
 #import "ZQTextAttachment.h"
 #import "ZQFriendsController.h"
+#import "ZQHighlightTextStorage.h"
 
 @interface ViewController ()<UITextViewDelegate,ZQInputAccessoryViewDelegagte,ZQEmoticonsViewDelegate,ZQFriendsControllerDelegate>
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) ZQEmoticonsView *emoticonsView;
 @property (nonatomic, strong) ZQInputAccessoryView *accessoryView;
+@property (nonatomic, strong) ZQHighlightTextStorage *textStorage;
+@property (nonatomic, strong) NSLayoutManager *layoutManager;
+@property (nonatomic, strong) NSTextContainer *textContainer;
 @end
 
 @implementation ViewController
@@ -29,6 +33,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
+    [self setTextKit];
+    
     [self.view addSubview:self.textView];
     [self.view addSubview:self.accessoryView];
     
@@ -40,6 +46,8 @@
         make.left.bottom.right.mas_equalTo(self.view);
         make.height.mas_equalTo(40);
     }];
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -47,11 +55,23 @@
     [self.textView becomeFirstResponder];
 }
 
+- (void)setTextKit {
+    self.textStorage = [[ZQHighlightTextStorage alloc] init];
+    self.layoutManager = [[NSLayoutManager alloc] init];
+    self.textContainer = [[NSTextContainer alloc] init];
+    
+    [self.textStorage addLayoutManager:self.layoutManager];
+    [self.layoutManager addTextContainer:self.textContainer];
+    
+//    [self.textStorage replaceCharactersInRange:NSMakeRange(0, 0) withString:self.textView.text];
+}
+
 #pragma mark - ZQFriendsControllerDelegate
 - (void)friendsController:(ZQFriendsController *)friendsController selectedFriendsArr:(NSArray *)selectedFriendsArr {
     for (int i = 0; i < selectedFriendsArr.count; i++) {
         [self.textView replaceRange:self.textView.selectedTextRange withText:selectedFriendsArr[i]];
     }
+    [self.textStorage replaceCharactersInRange:NSMakeRange(0, self.textView.text.length) withString:self.textView.text];
 }
 
 #pragma mark - publish state
@@ -187,7 +207,7 @@
 #pragma mark - getter
 -(UITextView *)textView {
     if (!_textView) {
-        _textView = [[UITextView alloc] init];
+        _textView = [[UITextView alloc] initWithFrame:self.view.frame textContainer:self.textContainer];
         _textView.delegate = self;
         _textView.font = [UIFont systemFontOfSize:16.0];
         [_textView becomeFirstResponder];

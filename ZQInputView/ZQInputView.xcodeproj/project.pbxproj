@@ -22,6 +22,8 @@
 		6230DD7F208F29F500D4E8E6 /* ZQEmoticonsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6230DD7E208F29F500D4E8E6 /* ZQEmoticonsButton.m */; };
 		6230DD82208F559F00D4E8E6 /* ZQEmoticonsBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6230DD81208F559F00D4E8E6 /* ZQEmoticonsBottomView.m */; };
 		6253B9E3209179D8008DD453 /* ZQFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9E2209179D8008DD453 /* ZQFriendCell.m */; };
+		6253B9E72091E2AA008DD453 /* ZQHighlightTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9E62091E2AA008DD453 /* ZQHighlightTextStorage.m */; };
+		6253B9EA2091FF81008DD453 /* ZQPhotoAlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9E92091FF81008DD453 /* ZQPhotoAlbumController.m */; };
 		625F16FD209020A80023FF05 /* ZQInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 625F16FC209020A80023FF05 /* ZQInputAccessoryView.m */; };
 		625F1703209054A70023FF05 /* ZQTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 625F1702209054A70023FF05 /* ZQTextAttachment.m */; };
 		625F1708209074CE0023FF05 /* ZQFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 625F1707209074CE0023FF05 /* ZQFriendsController.m */; };
@@ -80,6 +82,10 @@
 		6230DD81208F559F00D4E8E6 /* ZQEmoticonsBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQEmoticonsBottomView.m; sourceTree = "<group>"; };
 		6253B9E1209179D8008DD453 /* ZQFriendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQFriendCell.h; sourceTree = "<group>"; };
 		6253B9E2209179D8008DD453 /* ZQFriendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQFriendCell.m; sourceTree = "<group>"; };
+		6253B9E52091E2AA008DD453 /* ZQHighlightTextStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQHighlightTextStorage.h; sourceTree = "<group>"; };
+		6253B9E62091E2AA008DD453 /* ZQHighlightTextStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQHighlightTextStorage.m; sourceTree = "<group>"; };
+		6253B9E82091FF81008DD453 /* ZQPhotoAlbumController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQPhotoAlbumController.h; sourceTree = "<group>"; };
+		6253B9E92091FF81008DD453 /* ZQPhotoAlbumController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQPhotoAlbumController.m; sourceTree = "<group>"; };
 		625F16FB209020A80023FF05 /* ZQInputAccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQInputAccessoryView.h; sourceTree = "<group>"; };
 		625F16FC209020A80023FF05 /* ZQInputAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQInputAccessoryView.m; sourceTree = "<group>"; };
 		625F1701209054A70023FF05 /* ZQTextAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQTextAttachment.h; sourceTree = "<group>"; };
@@ -166,6 +172,7 @@
 				6230DD3E208F086600D4E8E6 /* AppDelegate.m */,
 				6230DD40208F086600D4E8E6 /* ViewController.h */,
 				6230DD41208F086600D4E8E6 /* ViewController.m */,
+				6253B9E42091E26C008DD453 /* ZQHighlightTextStorage */,
 				625F170020903DE40023FF05 /* ZQInputAccessoryView */,
 				625F16FF20903DC30023FF05 /* ZQInputView */,
 				625F16FE20903DA20023FF05 /* ZQEmoticonsManager */,
@@ -192,6 +199,15 @@
 				6230DD63208F086700D4E8E6 /* Info.plist */,
 			);
 			path = ZQInputViewUITests;
+			sourceTree = "<group>";
+		};
+		6253B9E42091E26C008DD453 /* ZQHighlightTextStorage */ = {
+			isa = PBXGroup;
+			children = (
+				6253B9E52091E2AA008DD453 /* ZQHighlightTextStorage.h */,
+				6253B9E62091E2AA008DD453 /* ZQHighlightTextStorage.m */,
+			);
+			path = ZQHighlightTextStorage;
 			sourceTree = "<group>";
 		};
 		625F16FE20903DA20023FF05 /* ZQEmoticonsManager */ = {
@@ -234,6 +250,8 @@
 		625F17042090615B0023FF05 /* ZQPhotoAlbumManager */ = {
 			isa = PBXGroup;
 			children = (
+				6253B9E82091FF81008DD453 /* ZQPhotoAlbumController.h */,
+				6253B9E92091FF81008DD453 /* ZQPhotoAlbumController.m */,
 			);
 			path = ZQPhotoAlbumManager;
 			sourceTree = "<group>";
@@ -545,6 +563,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				625F1703209054A70023FF05 /* ZQTextAttachment.m in Sources */,
+				6253B9EA2091FF81008DD453 /* ZQPhotoAlbumController.m in Sources */,
 				6230DD76208F0B9900D4E8E6 /* ZQEmoticonsModel.m in Sources */,
 				625F1708209074CE0023FF05 /* ZQFriendsController.m in Sources */,
 				6230DD42208F086600D4E8E6 /* ViewController.m in Sources */,
@@ -556,6 +575,7 @@
 				6230DD73208F0A5300D4E8E6 /* ZQEmoticonsManager.m in Sources */,
 				625F16FD209020A80023FF05 /* ZQInputAccessoryView.m in Sources */,
 				6230DD7F208F29F500D4E8E6 /* ZQEmoticonsButton.m in Sources */,
+				6253B9E72091E2AA008DD453 /* ZQHighlightTextStorage.m in Sources */,
 				6230DD3F208F086600D4E8E6 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
