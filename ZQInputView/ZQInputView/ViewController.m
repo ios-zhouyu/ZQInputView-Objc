@@ -13,6 +13,8 @@
 #import "ZQTextAttachment.h"
 #import "ZQFriendsController.h"
 #import "ZQHighlightTextStorage.h"
+#import "ZQPhtotAlbumNavController.h"
+#import "ZQPHFetchManager.h"
 
 @interface ViewController ()<UITextViewDelegate,ZQInputAccessoryViewDelegagte,ZQEmoticonsViewDelegate,ZQFriendsControllerDelegate>
 @property (nonatomic, strong) UITextView *textView;
@@ -47,7 +49,7 @@
         make.height.mas_equalTo(40);
     }];
     
-    
+    [[ZQPHFetchManager sharedInstance] checkFirstUsePhotoKit];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -63,7 +65,6 @@
     [self.textStorage addLayoutManager:self.layoutManager];
     [self.layoutManager addTextContainer:self.textContainer];
     
-//    [self.textStorage replaceCharactersInRange:NSMakeRange(0, 0) withString:self.textView.text];
 }
 
 #pragma mark - ZQFriendsControllerDelegate
@@ -162,7 +163,7 @@
         friendsController.delegate = self;
         [self presentViewController:[[UINavigationController alloc] initWithRootViewController:friendsController] animated:YES completion:nil];
     } else if (status == ZQInputAccessoryViewButtonStatusPhoto) {
-        
+        [self presentViewController:[[ZQPhtotAlbumNavController alloc] init] animated:YES completion:nil];
     } else if (status == ZQInputAccessoryViewButtonStatusCamera) {
         
     }

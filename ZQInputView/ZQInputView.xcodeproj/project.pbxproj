@@ -24,6 +24,10 @@
 		6253B9E3209179D8008DD453 /* ZQFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9E2209179D8008DD453 /* ZQFriendCell.m */; };
 		6253B9E72091E2AA008DD453 /* ZQHighlightTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9E62091E2AA008DD453 /* ZQHighlightTextStorage.m */; };
 		6253B9EA2091FF81008DD453 /* ZQPhotoAlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9E92091FF81008DD453 /* ZQPhotoAlbumController.m */; };
+		6253B9ED2092003D008DD453 /* ZQPhtotAlbumNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9EC2092003D008DD453 /* ZQPhtotAlbumNavController.m */; };
+		6253B9F0209200C5008DD453 /* ZQPhotoAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9EF209200C5008DD453 /* ZQPhotoAlbumCell.m */; };
+		6253B9F320920204008DD453 /* ZQPHFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9F120920204008DD453 /* ZQPHFetchManager.m */; };
+		6253B9F620920218008DD453 /* ZQPhotoAlbumBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9F520920218008DD453 /* ZQPhotoAlbumBottomView.m */; };
 		625F16FD209020A80023FF05 /* ZQInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 625F16FC209020A80023FF05 /* ZQInputAccessoryView.m */; };
 		625F1703209054A70023FF05 /* ZQTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 625F1702209054A70023FF05 /* ZQTextAttachment.m */; };
 		625F1708209074CE0023FF05 /* ZQFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 625F1707209074CE0023FF05 /* ZQFriendsController.m */; };
@@ -86,6 +90,14 @@
 		6253B9E62091E2AA008DD453 /* ZQHighlightTextStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQHighlightTextStorage.m; sourceTree = "<group>"; };
 		6253B9E82091FF81008DD453 /* ZQPhotoAlbumController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQPhotoAlbumController.h; sourceTree = "<group>"; };
 		6253B9E92091FF81008DD453 /* ZQPhotoAlbumController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQPhotoAlbumController.m; sourceTree = "<group>"; };
+		6253B9EB2092003D008DD453 /* ZQPhtotAlbumNavController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQPhtotAlbumNavController.h; sourceTree = "<group>"; };
+		6253B9EC2092003D008DD453 /* ZQPhtotAlbumNavController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQPhtotAlbumNavController.m; sourceTree = "<group>"; };
+		6253B9EE209200C5008DD453 /* ZQPhotoAlbumCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQPhotoAlbumCell.h; sourceTree = "<group>"; };
+		6253B9EF209200C5008DD453 /* ZQPhotoAlbumCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQPhotoAlbumCell.m; sourceTree = "<group>"; };
+		6253B9F120920204008DD453 /* ZQPHFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQPHFetchManager.m; sourceTree = "<group>"; };
+		6253B9F220920204008DD453 /* ZQPHFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQPHFetchManager.h; sourceTree = "<group>"; };
+		6253B9F520920218008DD453 /* ZQPhotoAlbumBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQPhotoAlbumBottomView.m; sourceTree = "<group>"; };
+		6253B9F7209202AB008DD453 /* ZQPhotoAlbumBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQPhotoAlbumBottomView.h; sourceTree = "<group>"; };
 		625F16FB209020A80023FF05 /* ZQInputAccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQInputAccessoryView.h; sourceTree = "<group>"; };
 		625F16FC209020A80023FF05 /* ZQInputAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQInputAccessoryView.m; sourceTree = "<group>"; };
 		625F1701209054A70023FF05 /* ZQTextAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQTextAttachment.h; sourceTree = "<group>"; };
@@ -250,8 +262,16 @@
 		625F17042090615B0023FF05 /* ZQPhotoAlbumManager */ = {
 			isa = PBXGroup;
 			children = (
+				6253B9EB2092003D008DD453 /* ZQPhtotAlbumNavController.h */,
+				6253B9EC2092003D008DD453 /* ZQPhtotAlbumNavController.m */,
 				6253B9E82091FF81008DD453 /* ZQPhotoAlbumController.h */,
 				6253B9E92091FF81008DD453 /* ZQPhotoAlbumController.m */,
+				6253B9F7209202AB008DD453 /* ZQPhotoAlbumBottomView.h */,
+				6253B9F520920218008DD453 /* ZQPhotoAlbumBottomView.m */,
+				6253B9EE209200C5008DD453 /* ZQPhotoAlbumCell.h */,
+				6253B9EF209200C5008DD453 /* ZQPhotoAlbumCell.m */,
+				6253B9F220920204008DD453 /* ZQPHFetchManager.h */,
+				6253B9F120920204008DD453 /* ZQPHFetchManager.m */,
 			);
 			path = ZQPhotoAlbumManager;
 			sourceTree = "<group>";
@@ -566,15 +586,19 @@
 				6253B9EA2091FF81008DD453 /* ZQPhotoAlbumController.m in Sources */,
 				6230DD76208F0B9900D4E8E6 /* ZQEmoticonsModel.m in Sources */,
 				625F1708209074CE0023FF05 /* ZQFriendsController.m in Sources */,
+				6253B9F620920218008DD453 /* ZQPhotoAlbumBottomView.m in Sources */,
 				6230DD42208F086600D4E8E6 /* ViewController.m in Sources */,
 				6230DD7C208F21CE00D4E8E6 /* ZQEmoticonsCell.m in Sources */,
 				6230DD82208F559F00D4E8E6 /* ZQEmoticonsBottomView.m in Sources */,
 				6253B9E3209179D8008DD453 /* ZQFriendCell.m in Sources */,
 				6230DD4D208F086700D4E8E6 /* main.m in Sources */,
+				6253B9F320920204008DD453 /* ZQPHFetchManager.m in Sources */,
 				6230DD79208F210500D4E8E6 /* ZQEmoticonsView.m in Sources */,
+				6253B9ED2092003D008DD453 /* ZQPhtotAlbumNavController.m in Sources */,
 				6230DD73208F0A5300D4E8E6 /* ZQEmoticonsManager.m in Sources */,
 				625F16FD209020A80023FF05 /* ZQInputAccessoryView.m in Sources */,
 				6230DD7F208F29F500D4E8E6 /* ZQEmoticonsButton.m in Sources */,
+				6253B9F0209200C5008DD453 /* ZQPhotoAlbumCell.m in Sources */,
 				6253B9E72091E2AA008DD453 /* ZQHighlightTextStorage.m in Sources */,
 				6230DD3F208F086600D4E8E6 /* AppDelegate.m in Sources */,
 			);

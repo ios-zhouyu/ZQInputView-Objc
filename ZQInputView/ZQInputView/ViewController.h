@@ -10,6 +10,6 @@
 
 @interface ViewController : UIViewController
 
-
+@property (nonatomic, copy) NSArray *selectedAsserArr;
 @end
 
