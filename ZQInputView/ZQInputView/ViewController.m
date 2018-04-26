@@ -11,8 +11,9 @@
 #import "Masonry.h"
 #import "ZQInputAccessoryView.h"
 #import "ZQTextAttachment.h"
+#import "ZQFriendsController.h"
 
-@interface ViewController ()<UITextViewDelegate,ZQInputAccessoryViewDelegagte,ZQEmoticonsViewDelegate>
+@interface ViewController ()<UITextViewDelegate,ZQInputAccessoryViewDelegagte,ZQEmoticonsViewDelegate,ZQFriendsControllerDelegate>
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) ZQEmoticonsView *emoticonsView;
 @property (nonatomic, strong) ZQInputAccessoryView *accessoryView;
@@ -39,6 +40,18 @@
         make.left.bottom.right.mas_equalTo(self.view);
         make.height.mas_equalTo(40);
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.textView becomeFirstResponder];
+}
+
+#pragma mark - ZQFriendsControllerDelegate
+- (void)friendsController:(ZQFriendsController *)friendsController selectedFriendsArr:(NSArray *)selectedFriendsArr {
+    for (int i = 0; i < selectedFriendsArr.count; i++) {
+        [self.textView replaceRange:self.textView.selectedTextRange withText:selectedFriendsArr[i]];
+    }
 }
 
 #pragma mark - publish state
@@ -124,6 +137,14 @@
     } else if (status == ZQInputAccessoryViewButtonStatusCheckInputView) {
         self.textView.inputView = nil;
         [self.textView reloadInputViews];
+    } else if (status == ZQInputAccessoryViewButtonStatusFriend) {
+        ZQFriendsController *friendsController = [[ZQFriendsController alloc] init];
+        friendsController.delegate = self;
+        [self presentViewController:[[UINavigationController alloc] initWithRootViewController:friendsController] animated:YES completion:nil];
+    } else if (status == ZQInputAccessoryViewButtonStatusPhoto) {
+        
+    } else if (status == ZQInputAccessoryViewButtonStatusCamera) {
+        
     }
 }
 
@@ -157,13 +178,6 @@
     return keyboardRect.size.height;
 }
 
-#pragma mark - UITextViewDelegate
-- (void)textViewDidBeginEditing:(UITextView *)textView {
-    
-}
-- (void)textViewDidEndEditing:(UITextView *)textView {
-    
-}
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
@@ -176,6 +190,7 @@
         _textView = [[UITextView alloc] init];
         _textView.delegate = self;
         _textView.font = [UIFont systemFontOfSize:16.0];
+        [_textView becomeFirstResponder];
     }
     return _textView;
 }
