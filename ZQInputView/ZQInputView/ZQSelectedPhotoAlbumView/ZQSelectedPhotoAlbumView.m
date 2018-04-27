@@ -12,7 +12,7 @@
 
 static NSString *selectedPhotoAlbumCellID = @"selectedPhotoAlbumCell";
 
-@interface ZQSelectedPhotoAlbumView ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface ZQSelectedPhotoAlbumView ()<UICollectionViewDelegate,UICollectionViewDataSource,ZQSelectedPhotoAlbumCellDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @end
@@ -30,8 +30,15 @@ static NSString *selectedPhotoAlbumCellID = @"selectedPhotoAlbumCell";
     return self;
 }
 
-- (void)setSelectedPhotoAlbumArr:(NSArray *)selectedPhotoAlbumArr {
-    _selectedPhotoAlbumArr = selectedPhotoAlbumArr;
+
+- (void)setSelectedPhotoAlbumArrM:(NSMutableArray *)selectedPhotoAlbumArrM {
+    _selectedPhotoAlbumArrM = selectedPhotoAlbumArrM;
+    [self.collectionView reloadData];
+}
+
+#pragma mark - ZQSelectedPhotoAlbumCellDelegate
+- (void)deletedPhotoAlbumCellWithIndexPaht:(NSIndexPath *)indexPath {
+    [self.selectedPhotoAlbumArrM removeObjectAtIndex:indexPath.item];
     [self.collectionView reloadData];
 }
 
@@ -45,13 +52,13 @@ static NSString *selectedPhotoAlbumCellID = @"selectedPhotoAlbumCell";
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.selectedPhotoAlbumArr.count;
+    return self.selectedPhotoAlbumArrM.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ZQSelectedPhotoAlbumCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:selectedPhotoAlbumCellID forIndexPath:indexPath];
-//    cell.delegate = self;
-//    cell.indexPath = indexPath;
-    cell.image = self.selectedPhotoAlbumArr[indexPath.item];
+    cell.delegate = self;
+    cell.indexPath = indexPath;
+    cell.image = self.selectedPhotoAlbumArrM[indexPath.item];
     return cell;
 }
 

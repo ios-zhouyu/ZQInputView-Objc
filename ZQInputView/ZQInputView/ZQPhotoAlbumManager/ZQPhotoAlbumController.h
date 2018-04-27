@@ -14,5 +14,6 @@
 @end
 
 @interface ZQPhotoAlbumController : UIViewController
+@property (nonatomic, assign) NSInteger remainPhotoAlbumCount;
 @property (nonatomic, weak) id<ZQPhotoAlbumControllerDelegate> delegate;
 @end

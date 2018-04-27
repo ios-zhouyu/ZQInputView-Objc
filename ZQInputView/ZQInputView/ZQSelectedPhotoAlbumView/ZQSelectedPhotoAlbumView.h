@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZQSelectedPhotoAlbumView : UIView
-@property (nonatomic, copy) NSArray *selectedPhotoAlbumArr;
+@property (nonatomic, strong) NSMutableArray *selectedPhotoAlbumArrM;
 @end

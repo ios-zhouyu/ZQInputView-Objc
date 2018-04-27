@@ -77,17 +77,34 @@ NSInteger maxCount = 6;
 #pragma mark - UICollectionViewDelegate
 - (void)photoAlbumCellSelectedImageWithIndexPath:(NSIndexPath *)indexPath flag:(BOOL)flag {
     
-    if (self.collectionView.indexPathsForSelectedItems.count == maxCount - 1) {
-        self.bottomView.tipLabel.hidden = NO;
-    } else if (self.collectionView.indexPathsForSelectedItems.count > maxCount -1) {
-        self.bottomView.tipLabel.hidden = NO;
-        ZQPhotoAlbumCell *cell = (ZQPhotoAlbumCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-        [self.collectionView deselectItemAtIndexPath:indexPath animated:YES];
-        [cell didDeselectedPhotoAlbumCell];
-        return;
-    } else {
-        self.bottomView.tipLabel.hidden = YES;
+    if (self.remainPhotoAlbumCount <= 0) {//之前一张都没选择时
+        if (self.collectionView.indexPathsForSelectedItems.count == maxCount - 1) {
+            self.bottomView.tipLabel.hidden = NO;
+        } else if (self.collectionView.indexPathsForSelectedItems.count > maxCount -1) {
+            self.bottomView.tipLabel.hidden = NO;
+            ZQPhotoAlbumCell *cell = (ZQPhotoAlbumCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+            [self.collectionView deselectItemAtIndexPath:indexPath animated:YES];
+            [cell didDeselectedPhotoAlbumCell];
+            return;
+        } else {
+            self.bottomView.tipLabel.hidden = YES;
+        }
+    } else {//之前存在有选择的照片
+        if (self.collectionView.indexPathsForSelectedItems.count == self.remainPhotoAlbumCount - 1) {
+            self.bottomView.tipLabel.hidden = NO;
+        } else if (self.collectionView.indexPathsForSelectedItems.count > self.remainPhotoAlbumCount -1) {
+            self.bottomView.tipLabel.hidden = NO;
+            ZQPhotoAlbumCell *cell = (ZQPhotoAlbumCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+            [self.collectionView deselectItemAtIndexPath:indexPath animated:YES];
+            [cell didDeselectedPhotoAlbumCell];
+            return;
+        } else {
+            self.bottomView.tipLabel.hidden = YES;
+        }
     }
+
+    
+    
     
     if (flag) {
         [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];

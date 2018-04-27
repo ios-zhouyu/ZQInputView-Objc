@@ -40,7 +40,9 @@
 
 #pragma mark - event
 - (void)deleteSelectedImage:(UIButton *)button {
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(deletedPhotoAlbumCellWithIndexPaht:)]) {
+        [self.delegate deletedPhotoAlbumCellWithIndexPaht:self.indexPath];
+    }
 }
 
 #pragma mark - getter

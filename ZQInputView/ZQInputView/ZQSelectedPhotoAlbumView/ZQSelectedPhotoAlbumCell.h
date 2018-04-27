@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ZQSelectedPhotoAlbumCellDelegate<NSObject>
+@optional
+- (void)deletedPhotoAlbumCellWithIndexPaht:(NSIndexPath *)indexPath;
+@end
+
 @interface ZQSelectedPhotoAlbumCell : UICollectionViewCell
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+
+@property (nonatomic, weak) id<ZQSelectedPhotoAlbumCellDelegate> delegate;
+
 @end

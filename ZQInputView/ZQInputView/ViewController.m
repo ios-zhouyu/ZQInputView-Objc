@@ -18,6 +18,8 @@
 #import "ZQPhotoAlbumController.h"
 #import "ZQSelectedPhotoAlbumView.h"
 
+#define MAX_PHTOTALBUM_CONUT 6
+
 @interface ViewController ()<UITextViewDelegate,ZQInputAccessoryViewDelegagte,ZQEmoticonsViewDelegate,ZQFriendsControllerDelegate,ZQPhotoAlbumControllerDelegate>
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) ZQEmoticonsView *emoticonsView;
@@ -82,7 +84,10 @@
         make.bottom.mas_equalTo(self.accessoryView.mas_top);
         make.height.mas_equalTo(100);
     }];
-    self.selectedPhotoAlbumView.selectedPhotoAlbumArr = self.selectedPhotoAlbumArr;
+    
+    NSMutableArray *arrM = [NSMutableArray arrayWithArray:self.selectedPhotoAlbumView.selectedPhotoAlbumArrM];//记录剩下的图片
+    [arrM addObjectsFromArray:self.selectedPhotoAlbumArr];//将新的图片添加进去
+    self.selectedPhotoAlbumView.selectedPhotoAlbumArrM = arrM;//展示所有图片
 }
 
 #pragma mark - ZQFriendsControllerDelegate
@@ -181,8 +186,13 @@
         friendsController.delegate = self;
         [self presentViewController:[[UINavigationController alloc] initWithRootViewController:friendsController] animated:YES completion:nil];
     } else if (status == ZQInputAccessoryViewButtonStatusPhoto) {
+        if (self.selectedPhotoAlbumView && self.selectedPhotoAlbumView.selectedPhotoAlbumArrM.count >= 6) {
+            NSLog(@"最多选择6张图片");
+            return;
+        }
         ZQPhotoAlbumController *photoAlbumController = [[ZQPhotoAlbumController alloc] init];
         photoAlbumController.delegate = self;
+        photoAlbumController.remainPhotoAlbumCount = MAX_PHTOTALBUM_CONUT - self.selectedPhotoAlbumView.selectedPhotoAlbumArrM.count;
         [self presentViewController:[[UINavigationController alloc] initWithRootViewController:photoAlbumController] animated:YES completion:nil];
     } else if (status == ZQInputAccessoryViewButtonStatusCamera) {
         
