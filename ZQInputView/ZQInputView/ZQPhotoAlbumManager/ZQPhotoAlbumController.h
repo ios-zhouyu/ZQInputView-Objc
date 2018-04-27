@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZQPhotoAlbumController : UIViewController
+@protocol ZQPhotoAlbumControllerDelegate <NSObject>
+@optional
+- (void)photoAlbumControllerSelectedPhotoAlbumArr:(NSArray *)selectedPhotoAlbumArr;
+@end
 
+@interface ZQPhotoAlbumController : UIViewController
+@property (nonatomic, weak) id<ZQPhotoAlbumControllerDelegate> delegate;
 @end

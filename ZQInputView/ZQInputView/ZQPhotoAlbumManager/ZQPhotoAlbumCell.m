@@ -8,6 +8,7 @@
 
 #import "ZQPhotoAlbumCell.h"
 #import "Masonry.h"
+#import "ZQPHFetchManager.h"
 
 @interface ZQPhotoAlbumCell ()
 @property (nonatomic, strong) UIImageView *imageView;
@@ -39,15 +40,7 @@
 
 - (void)setAsset:(PHAsset *)asset {
     _asset = asset;
-    
-    PHImageRequestOptions *imageRequestOptions = [[PHImageRequestOptions alloc] init];
-    imageRequestOptions.resizeMode = PHImageRequestOptionsResizeModeFast;
-    
-    __weak typeof(self) weakSelf = self;
-    
-    [[PHCachingImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(250, 250) contentMode:PHImageContentModeDefault options:imageRequestOptions resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-        weakSelf.imageView.image = result;
-    }];
+    self.imageView.image = [[ZQPHFetchManager sharedInstance] getPhotoImageWithAsset:asset imageSize:CGSizeMake(350, 350)];
 }
 
 - (void)selectedImage:(UIButton *)button {

@@ -52,6 +52,11 @@ NSInteger maxCount = 6;
     [self.collectionView reloadData];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+}
+
 #pragma amrk - ZQPhotoAlbumBottomViewDelegate
 - (void)photoAlbumBottomViewCertainButtonClick {
     NSMutableArray *arrM = [[NSMutableArray alloc] init];
@@ -59,7 +64,11 @@ NSInteger maxCount = 6;
         [arrM addObject:self.assetArr[obj.item]];
     }];
     self.selectedAsserArr = [arrM copy];
-    [self cancel];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (self.delegate && [self.delegate respondsToSelector:@selector(photoAlbumControllerSelectedPhotoAlbumArr:)]) {
+            [self.delegate photoAlbumControllerSelectedPhotoAlbumArr:self.selectedAsserArr];
+        }
+    }];
 }
 - (void)photoAlbumBottomViewPreviewButtonClick {
     
@@ -95,9 +104,6 @@ NSInteger maxCount = 6;
         self.bottomView.certainButton.selected = NO;
         [self.bottomView.certainButton setTitle:@"确认" forState:UIControlStateSelected];
     }
-
-    
-    NSLog(@"%@",self.collectionView.indexPathsForSelectedItems);
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -122,10 +128,7 @@ NSInteger maxCount = 6;
 
 
 - (void)cancel {
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        ViewController *viewController = [[ViewController alloc] init];
-        viewController.selectedAsserArr = self.selectedAsserArr;
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - getter

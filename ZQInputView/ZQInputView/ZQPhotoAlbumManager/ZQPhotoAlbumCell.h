@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Photos/Photos.h>
+
+@class PHAsset;
 
 @protocol ZQPhotoAlbumCellDelegate <NSObject>
 @optional

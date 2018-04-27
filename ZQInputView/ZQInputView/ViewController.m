@@ -15,14 +15,19 @@
 #import "ZQHighlightTextStorage.h"
 #import "ZQPhtotAlbumNavController.h"
 #import "ZQPHFetchManager.h"
+#import "ZQPhotoAlbumController.h"
+#import "ZQSelectedPhotoAlbumView.h"
 
-@interface ViewController ()<UITextViewDelegate,ZQInputAccessoryViewDelegagte,ZQEmoticonsViewDelegate,ZQFriendsControllerDelegate>
+@interface ViewController ()<UITextViewDelegate,ZQInputAccessoryViewDelegagte,ZQEmoticonsViewDelegate,ZQFriendsControllerDelegate,ZQPhotoAlbumControllerDelegate>
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) ZQEmoticonsView *emoticonsView;
 @property (nonatomic, strong) ZQInputAccessoryView *accessoryView;
 @property (nonatomic, strong) ZQHighlightTextStorage *textStorage;
 @property (nonatomic, strong) NSLayoutManager *layoutManager;
 @property (nonatomic, strong) NSTextContainer *textContainer;
+
+@property (nonatomic, strong) NSArray *selectedPhotoAlbumArr;
+@property (nonatomic, strong) ZQSelectedPhotoAlbumView *selectedPhotoAlbumView;
 @end
 
 @implementation ViewController
@@ -55,6 +60,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.textView becomeFirstResponder];
+    NSLog(@"%@",self.selectedAsserArr);
 }
 
 - (void)setTextKit {
@@ -65,6 +71,18 @@
     [self.textStorage addLayoutManager:self.layoutManager];
     [self.layoutManager addTextContainer:self.textContainer];
     
+}
+
+#pragma mark - ZQPhotoAlbumControllerDelegate
+- (void)photoAlbumControllerSelectedPhotoAlbumArr:(NSArray *)selectedAssetArr {
+    self.selectedPhotoAlbumArr = [[ZQPHFetchManager sharedInstance] getSelectedPhotosImageWithSelectedAssetArr:selectedAssetArr];
+    [self.view addSubview:self.selectedPhotoAlbumView];
+    [self.selectedPhotoAlbumView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.accessoryView.mas_top);
+        make.height.mas_equalTo(100);
+    }];
+    self.selectedPhotoAlbumView.selectedPhotoAlbumArr = self.selectedPhotoAlbumArr;
 }
 
 #pragma mark - ZQFriendsControllerDelegate
@@ -163,7 +181,9 @@
         friendsController.delegate = self;
         [self presentViewController:[[UINavigationController alloc] initWithRootViewController:friendsController] animated:YES completion:nil];
     } else if (status == ZQInputAccessoryViewButtonStatusPhoto) {
-        [self presentViewController:[[ZQPhtotAlbumNavController alloc] init] animated:YES completion:nil];
+        ZQPhotoAlbumController *photoAlbumController = [[ZQPhotoAlbumController alloc] init];
+        photoAlbumController.delegate = self;
+        [self presentViewController:[[UINavigationController alloc] initWithRootViewController:photoAlbumController] animated:YES completion:nil];
     } else if (status == ZQInputAccessoryViewButtonStatusCamera) {
         
     }
@@ -206,6 +226,13 @@
 }
 
 #pragma mark - getter
+- (ZQSelectedPhotoAlbumView *)selectedPhotoAlbumView {
+    if (!_selectedPhotoAlbumView) {
+        _selectedPhotoAlbumView = [[ZQSelectedPhotoAlbumView alloc] init];
+        _selectedPhotoAlbumView.backgroundColor = [UIColor clearColor];
+    }
+    return _selectedPhotoAlbumView;
+}
 -(UITextView *)textView {
     if (!_textView) {
         _textView = [[UITextView alloc] initWithFrame:self.view.frame textContainer:self.textContainer];

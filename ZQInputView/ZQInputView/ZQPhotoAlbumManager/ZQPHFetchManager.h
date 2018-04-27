@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+@class PHAsset, UIImage;
 
 typedef NS_ENUM(NSInteger, ZQAssetMediaType) {
     ZQAssetMediaTypeUnknown,//未知
@@ -24,5 +27,11 @@ typedef NS_ENUM(NSInteger, ZQAssetMediaType) {
 
 //获取所有照片
 - (NSArray *)getAllPhotosFromPhotoLibrary;
+
+//获取已选择PHAsset集合中的原始图片
+- (NSArray<UIImage *> *)getSelectedPhotosImageWithSelectedAssetArr:(NSArray<PHAsset *> *)selectedAssetArr;
+
+//冲PHAsset中获取单张图片
+- (UIImage *)getPhotoImageWithAsset:(PHAsset *)asset imageSize:(CGSize)imageSize;
 
 @end

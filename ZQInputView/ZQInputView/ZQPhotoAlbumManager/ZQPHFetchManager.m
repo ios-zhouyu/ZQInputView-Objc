@@ -41,19 +41,36 @@
                 
                 //添加过滤条件,筛选出图片,按时间先后顺序
                 PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
-                fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
-                fetchOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld", PHAssetMediaTypeImage];
+                fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];//YES正序.NO倒序
+                fetchOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld", PHAssetMediaTypeImage];//筛选类型图片,音频,视频
                 PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:fetchOptions];
                 
                 //遍历PHFetchResult图片集合,获取图片
                 [fetchResult enumerateObjectsUsingBlock:^(PHAsset * _Nonnull asset, NSUInteger idx, BOOL * _Nonnull stop) {
-//                    NSLog(@"%@",asset);
                     [photosArrM addObject:asset];
                 }];
             }
         }
     }
     return [photosArrM copy];
+}
+
+- (NSArray<UIImage *> *)getSelectedPhotosImageWithSelectedAssetArr:(NSArray<PHAsset *> *)selectedAssetArr {
+    NSMutableArray *arrM = [[NSMutableArray alloc] initWithCapacity:selectedAssetArr.count];
+    [selectedAssetArr enumerateObjectsUsingBlock:^(PHAsset * _Nonnull asset, NSUInteger idx, BOOL * _Nonnull stop) {
+        [arrM addObject:[self getPhotoImageWithAsset:asset imageSize:CGSizeMake(500, 500)]];
+    }];
+    return [arrM copy];
+}
+
+- (UIImage *)getPhotoImageWithAsset:(PHAsset *)asset imageSize:(CGSize)imageSize {
+    PHImageRequestOptions *imageRequestOptions = [[PHImageRequestOptions alloc] init];
+    imageRequestOptions.resizeMode = PHImageRequestOptionsResizeModeFast;
+    __block UIImage *image = [[UIImage alloc] init];
+    [[PHCachingImageManager defaultManager] requestImageForAsset:asset targetSize:imageSize contentMode:PHImageContentModeDefault options:imageRequestOptions resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+        image = result;
+    }];
+    return image;
 }
 
 #pragma mark - 触发系统相册权限提示框
