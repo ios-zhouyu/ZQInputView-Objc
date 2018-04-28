@@ -23,6 +23,8 @@
 		6230DD82208F559F00D4E8E6 /* ZQEmoticonsBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6230DD81208F559F00D4E8E6 /* ZQEmoticonsBottomView.m */; };
 		6235E97E2092D47E00C23D90 /* ZQSelectedPhotoAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6235E97D2092D47E00C23D90 /* ZQSelectedPhotoAlbumView.m */; };
 		6235E9812092D50D00C23D90 /* ZQSelectedPhotoAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6235E9802092D50D00C23D90 /* ZQSelectedPhotoAlbumCell.m */; };
+		6235E984209324A200C23D90 /* ZQPhotoAlbumPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6235E983209324A200C23D90 /* ZQPhotoAlbumPreviewController.m */; };
+		6235E9872093252400C23D90 /* ZQSelectedPhotoAlbumPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6235E9862093252400C23D90 /* ZQSelectedPhotoAlbumPreviewController.m */; };
 		6253B9E3209179D8008DD453 /* ZQFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9E2209179D8008DD453 /* ZQFriendCell.m */; };
 		6253B9E72091E2AA008DD453 /* ZQHighlightTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9E62091E2AA008DD453 /* ZQHighlightTextStorage.m */; };
 		6253B9EA2091FF81008DD453 /* ZQPhotoAlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253B9E92091FF81008DD453 /* ZQPhotoAlbumController.m */; };
@@ -33,6 +35,7 @@
 		625F16FD209020A80023FF05 /* ZQInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 625F16FC209020A80023FF05 /* ZQInputAccessoryView.m */; };
 		625F1703209054A70023FF05 /* ZQTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 625F1702209054A70023FF05 /* ZQTextAttachment.m */; };
 		625F1708209074CE0023FF05 /* ZQFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 625F1707209074CE0023FF05 /* ZQFriendsController.m */; };
+		626108DF20941D1900E91F58 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 626108DD20941D1900E91F58 /* UIImage+GIF.m */; };
 		DFC5C682D3BCA20AA4DA83F6 /* libPods-ZQInputViewTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 309FE3CEF1085E33C088D314 /* libPods-ZQInputViewTests.a */; };
 		E24A6CF0D531FFF4A6FB9728 /* libPods-ZQInputViewUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73571E5311667CD6067F0189 /* libPods-ZQInputViewUITests.a */; };
 /* End PBXBuildFile section */
@@ -90,6 +93,10 @@
 		6235E97D2092D47E00C23D90 /* ZQSelectedPhotoAlbumView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQSelectedPhotoAlbumView.m; sourceTree = "<group>"; };
 		6235E97F2092D50D00C23D90 /* ZQSelectedPhotoAlbumCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQSelectedPhotoAlbumCell.h; sourceTree = "<group>"; };
 		6235E9802092D50D00C23D90 /* ZQSelectedPhotoAlbumCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQSelectedPhotoAlbumCell.m; sourceTree = "<group>"; };
+		6235E982209324A200C23D90 /* ZQPhotoAlbumPreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQPhotoAlbumPreviewController.h; sourceTree = "<group>"; };
+		6235E983209324A200C23D90 /* ZQPhotoAlbumPreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQPhotoAlbumPreviewController.m; sourceTree = "<group>"; };
+		6235E9852093252400C23D90 /* ZQSelectedPhotoAlbumPreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQSelectedPhotoAlbumPreviewController.h; sourceTree = "<group>"; };
+		6235E9862093252400C23D90 /* ZQSelectedPhotoAlbumPreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQSelectedPhotoAlbumPreviewController.m; sourceTree = "<group>"; };
 		6253B9E1209179D8008DD453 /* ZQFriendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQFriendCell.h; sourceTree = "<group>"; };
 		6253B9E2209179D8008DD453 /* ZQFriendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQFriendCell.m; sourceTree = "<group>"; };
 		6253B9E52091E2AA008DD453 /* ZQHighlightTextStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQHighlightTextStorage.h; sourceTree = "<group>"; };
@@ -110,6 +117,8 @@
 		625F1702209054A70023FF05 /* ZQTextAttachment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQTextAttachment.m; sourceTree = "<group>"; };
 		625F1706209074CE0023FF05 /* ZQFriendsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQFriendsController.h; sourceTree = "<group>"; };
 		625F1707209074CE0023FF05 /* ZQFriendsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQFriendsController.m; sourceTree = "<group>"; };
+		626108DD20941D1900E91F58 /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
+		626108DE20941D1900E91F58 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
 		73571E5311667CD6067F0189 /* libPods-ZQInputViewUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZQInputViewUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB7587533E541D6427AACF6 /* Pods-ZQInputViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZQInputViewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZQInputViewTests/Pods-ZQInputViewTests.release.xcconfig"; sourceTree = "<group>"; };
 		98C0E38D02CB6020F54AC227 /* Pods-ZQInputViewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZQInputViewUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZQInputViewUITests/Pods-ZQInputViewUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +192,7 @@
 		6230DD3C208F086600D4E8E6 /* ZQInputView */ = {
 			isa = PBXGroup;
 			children = (
+				626108DC20941CFE00E91F58 /* Category */,
 				625F1705209074A20023FF05 /* ZQFrendsManager */,
 				625F17042090615B0023FF05 /* ZQPhotoAlbumManager */,
 				6230DD6F208F090E00D4E8E6 /* Emoticons.bundle */,
@@ -227,6 +237,8 @@
 				6235E97D2092D47E00C23D90 /* ZQSelectedPhotoAlbumView.m */,
 				6235E97F2092D50D00C23D90 /* ZQSelectedPhotoAlbumCell.h */,
 				6235E9802092D50D00C23D90 /* ZQSelectedPhotoAlbumCell.m */,
+				6235E9852093252400C23D90 /* ZQSelectedPhotoAlbumPreviewController.h */,
+				6235E9862093252400C23D90 /* ZQSelectedPhotoAlbumPreviewController.m */,
 			);
 			path = ZQSelectedPhotoAlbumView;
 			sourceTree = "<group>";
@@ -282,6 +294,8 @@
 			children = (
 				6253B9EB2092003D008DD453 /* ZQPhtotAlbumNavController.h */,
 				6253B9EC2092003D008DD453 /* ZQPhtotAlbumNavController.m */,
+				6235E982209324A200C23D90 /* ZQPhotoAlbumPreviewController.h */,
+				6235E983209324A200C23D90 /* ZQPhotoAlbumPreviewController.m */,
 				6253B9E82091FF81008DD453 /* ZQPhotoAlbumController.h */,
 				6253B9E92091FF81008DD453 /* ZQPhotoAlbumController.m */,
 				6253B9F7209202AB008DD453 /* ZQPhotoAlbumBottomView.h */,
@@ -303,6 +317,15 @@
 				6253B9E2209179D8008DD453 /* ZQFriendCell.m */,
 			);
 			path = ZQFrendsManager;
+			sourceTree = "<group>";
+		};
+		626108DC20941CFE00E91F58 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				626108DE20941D1900E91F58 /* UIImage+GIF.h */,
+				626108DD20941D1900E91F58 /* UIImage+GIF.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		C15117C845B8888799A24164 /* Frameworks */ = {
@@ -606,6 +629,7 @@
 				625F1708209074CE0023FF05 /* ZQFriendsController.m in Sources */,
 				6253B9F620920218008DD453 /* ZQPhotoAlbumBottomView.m in Sources */,
 				6230DD42208F086600D4E8E6 /* ViewController.m in Sources */,
+				6235E984209324A200C23D90 /* ZQPhotoAlbumPreviewController.m in Sources */,
 				6230DD7C208F21CE00D4E8E6 /* ZQEmoticonsCell.m in Sources */,
 				6230DD82208F559F00D4E8E6 /* ZQEmoticonsBottomView.m in Sources */,
 				6253B9E3209179D8008DD453 /* ZQFriendCell.m in Sources */,
@@ -617,9 +641,11 @@
 				6230DD73208F0A5300D4E8E6 /* ZQEmoticonsManager.m in Sources */,
 				625F16FD209020A80023FF05 /* ZQInputAccessoryView.m in Sources */,
 				6235E97E2092D47E00C23D90 /* ZQSelectedPhotoAlbumView.m in Sources */,
+				626108DF20941D1900E91F58 /* UIImage+GIF.m in Sources */,
 				6230DD7F208F29F500D4E8E6 /* ZQEmoticonsButton.m in Sources */,
 				6253B9F0209200C5008DD453 /* ZQPhotoAlbumCell.m in Sources */,
 				6253B9E72091E2AA008DD453 /* ZQHighlightTextStorage.m in Sources */,
+				6235E9872093252400C23D90 /* ZQSelectedPhotoAlbumPreviewController.m in Sources */,
 				6230DD3F208F086600D4E8E6 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

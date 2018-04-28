@@ -13,6 +13,13 @@
 - (void)setModel:(ZQEmoticonsModel *)model {
     _model = model;
     
+    if (model.path && model.gif) {
+        NSString *imagePath = [NSString stringWithFormat:@"%@/%@",model.path,model.gif];
+        [self setImage:[UIImage imageWithContentsOfFile:imagePath] forState:UIControlStateNormal];
+    } else {
+        [self setImage:nil forState:UIControlStateNormal];
+    }
+    
     if (model.path && model.png) {
         NSString *imagePath = [NSString stringWithFormat:@"%@/%@",model.path,model.png];
         [self setImage:[UIImage imageWithContentsOfFile:imagePath] forState:UIControlStateNormal];

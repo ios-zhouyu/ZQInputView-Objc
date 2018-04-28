@@ -17,6 +17,8 @@
 #import "ZQPHFetchManager.h"
 #import "ZQPhotoAlbumController.h"
 #import "ZQSelectedPhotoAlbumView.h"
+#import "UIImage+GIF.h"
+
 
 #define MAX_PHTOTALBUM_CONUT 6
 
@@ -144,16 +146,25 @@
 - (void)emoticonsViewSelectedEmoticonsWithEmoticonsModel:(ZQEmoticonsModel *)model {
     if (model.emoji) {//表情
         [self.textView replaceRange:self.textView.selectedTextRange withText:model.emoji];
-    } else if (model.png && model.path) {//图片
+    } else if ((model.gif || model.png) && model.path) {//图片或gif
         //保存先前的attributedText内容
        NSMutableAttributedString *oldAttributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.textView.attributedText];
         
         //创建包含TextAttachment附件的attributedString
         ZQTextAttachment *textAttachment = [[ZQTextAttachment alloc] init];
         textAttachment.model = model;
-        NSString *imagePath = [NSString stringWithFormat:@"%@/%@",model.path,model.png];
-        textAttachment.image = [UIImage imageWithContentsOfFile:imagePath];
+        NSString *imagePath = @"";
+        UIImage *image = [[UIImage alloc] init];
+//        UIImageView *imageView = [[UIImageView alloc] init];
         CGFloat fontHeight = self.textView.font.lineHeight;
+        if (model.gif) {
+            imagePath = [NSString stringWithFormat:@"%@/%@",model.path,model.gif];
+        } else {
+            imagePath = [NSString stringWithFormat:@"%@/%@",model.path,model.png];
+            image = [UIImage imageWithContentsOfFile:imagePath];
+            textAttachment.image = image;
+        }
+        
         textAttachment.bounds = CGRectMake(0, -4, fontHeight, fontHeight);
         NSAttributedString *attachmentAttributedString = [NSAttributedString attributedStringWithAttachment:textAttachment];
         
