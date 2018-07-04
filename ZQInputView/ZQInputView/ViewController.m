@@ -165,20 +165,21 @@
         
         NSAttributedString *attachmentAttributedString = [[NSAttributedString alloc] init];
         
-        if (model.gif) {
-            imagePath = [[NSBundle mainBundle] pathForResource:@"100@2x" ofType:@"gif"];
-            YYImage *image = [YYImage imageWithData:[NSData dataWithContentsOfFile:imagePath] scale:2];
-            image.preloadAllAnimatedImageFrames = YES;
-            YYAnimatedImageView *imageView = [[YYAnimatedImageView alloc] initWithImage:image];
-            attachmentAttributedString = [NSMutableAttributedString yy_attachmentStringWithContent:imageView contentMode:UIViewContentModeCenter attachmentSize:imageView.frame.size alignToFont:self.textView.font alignment:YYTextVerticalAlignmentCenter];
-            [self.textView addSubview:imageView];
-        } else {
+//        if (model.gif) {
+//            imagePath = [[NSBundle mainBundle] pathForResource:@"100@2x" ofType:@"gif"];
+//            YYImage *image = [YYImage imageWithData:[NSData dataWithContentsOfFile:imagePath] scale:2];
+//            image.preloadAllAnimatedImageFrames = YES;
+//            YYAnimatedImageView *imageView = [[YYAnimatedImageView alloc] initWithImage:image];
+//            attachmentAttributedString = [NSMutableAttributedString yy_attachmentStringWithContent:imageView contentMode:UIViewContentModeCenter attachmentSize:imageView.frame.size alignToFont:self.textView.font alignment:YYTextVerticalAlignmentCenter];
+//            [self.textView addSubview:imageView];
+//        } else
+//        {
             imagePath = [NSString stringWithFormat:@"%@/%@",model.path,model.png];
             image = [UIImage imageWithContentsOfFile:imagePath];
             textAttachment.image = image;
             textAttachment.bounds = CGRectMake(0, -4, fontHeight, fontHeight);
             attachmentAttributedString = [NSAttributedString attributedStringWithAttachment:textAttachment];
-        }
+//        }
         
         //获取光标的位置,在当前光标出插入图片
         NSRange currentRange = self.textView.selectedRange;

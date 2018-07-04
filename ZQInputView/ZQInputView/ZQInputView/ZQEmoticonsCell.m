@@ -12,8 +12,8 @@
 #import "ZQEmoticonsButton.h"
 
 #define pageButtonCount 44
-#define colCount 9
-#define rowCount 5
+#define colCount 7
+#define rowCount 4
 
 @interface ZQEmoticonsCell ()
 @property (nonatomic, strong) NSMutableArray *emoticonsButtonArrM;//表情按钮
